@@ -73,12 +73,12 @@ public class Full_Bot extends LinearOpMode {
         
         if (Use_ArmRotate) {
           
-          if (gamepad2.dpad_right) {
-            ArmRotate.setPower(1);
+          if (gamepad2.right_stick_x > 0) {
+            ArmRotate.setPower(gamepad2.right_stick_x);
             telemetry.addData("ArmRotate Position", "up");
           } 
-          else if (gamepad2.dpad_left) {
-            ArmRotate.setPower(-1);
+          else if (gamepad2.right_stick_x < 0) {
+            ArmRotate.setPower(gamepad2.right_stick_x);
             telemetry.addData("ArmRotate Position", "down");
           }
         }
@@ -96,21 +96,21 @@ public class Full_Bot extends LinearOpMode {
 
 
         if (Use_Lift) {
-            if (gamepad2.right_stick_y > 0) {
-                Lift_Top.setPower(gamepad2.right_stick_y);
+            if (gamepad2.left_trigger > 0) {
+                Lift_Top.setPower(gamepad2.left_trigger);
                 telemetry.addData("TopLift Position", "up");
             } 
-            else if (gamepad2.right_stick_y < 0) {
-                Lift_Bottom.setPower(gamepad2.right_stick_y);
+            else if (gamepad2.left_bumper) {
+                Lift_Bottom.setPower(-1);
                 telemetry.addData("Top Lift Position", "down");
             }
 
-            if (gamepad2.left_stick_x > 0) {
-                Lift_Top.setPower(gamepad2.right_stick_x);
+            if (gamepad2.right_trigger > 0) {
+                Lift_Top.setPower(gamepad2.right_trigger);
                 telemetry.addData("TopLift Position", "up");
             } 
-            else if (gamepad2.left_stick_x < 0) {
-                Lift_Bottom.setPower(gamepad2.right_stick_x);
+            else if (gamepad2.right_bumper) {
+                Lift_Bottom.setPower(-1);
                 telemetry.addData("Top Lift Position", "down");
             }
         }
