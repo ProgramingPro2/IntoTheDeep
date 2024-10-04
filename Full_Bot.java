@@ -69,32 +69,31 @@ public class Full_Bot extends LinearOpMode {
             Arm.setPower(gamepad2.left_stick_y);
             telemetry.addData("Arm Position", "down");
           }
-          
-          if (Use_ArmRotate) {
-            
-            if (gamepad2.dpad_right) {
-              ArmRotate.setPower(1);
-              telemetry.addData("ArmRotate Position", "up");
-            } 
-            else if (gamepad2.dpad_left) {
-              ArmRotate.setPower(-1);
-              telemetry.addData("ArmRotate Position", "down");
-            }
-
-          }
-
-          if (Use_Intake) {
-            if (gamepad2.dpad_up) {
-              Intake.setPower(1);
-              telemetry.addData("Intake Position", "up");
-            } 
-            else if (gamepad2.dpad_down) {
-              Intake.setPower(-1);
-              telemetry.addData("Intake Position", "down");
-            }
-          }
-          
         }
+        
+        if (Use_ArmRotate) {
+          
+          if (gamepad2.dpad_right) {
+            ArmRotate.setPower(1);
+            telemetry.addData("ArmRotate Position", "up");
+          } 
+          else if (gamepad2.dpad_left) {
+            ArmRotate.setPower(-1);
+            telemetry.addData("ArmRotate Position", "down");
+          }
+        }
+
+        if (Use_Intake) {
+          if (gamepad2.dpad_up) {
+            Intake.setPower(1);
+            telemetry.addData("Intake Position", "up");
+          } 
+          else if (gamepad2.dpad_down) {
+            Intake.setPower(-1);
+            telemetry.addData("Intake Position", "down");
+          }
+        }
+
 
         if (Use_Lift) {
             if (gamepad2.right_stick_y > 0) {
