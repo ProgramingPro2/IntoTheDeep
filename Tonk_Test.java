@@ -9,7 +9,8 @@ public class Tonk_Test extends LinearOpMode {
 
   private DcMotor FR;
   private DcMotor FL;
-  
+  private boolean Use_Arm = false;
+  private boolean Use_Liner_Track = false;
 
   /**
    * This function is executed when this OpMode is selected from the Driver Station.
@@ -39,6 +40,6 @@ public class Tonk_Test extends LinearOpMode {
         telemetry.update();
       }
     }
-    if (arm)
+
   }
 }
