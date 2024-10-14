@@ -15,9 +15,9 @@ public class Full_Bot extends LinearOpMode {
   private Servo ArmLength;
 
   private boolean Use_Arm = false;
-  private boolean Use_Lift = false;
   private boolean Use_ArmRotate = false;
   private boolean Use_Intake = false;
+  private boolean Use_ArmUp = false;
 
   /**
    * This function is executed when this OpMode is selected from the Driver Station.
