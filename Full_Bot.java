@@ -17,7 +17,6 @@ public class Full_Bot extends LinearOpMode {
   private boolean Use_Arm = false;
   private boolean Use_ArmRotate = false;
   private boolean Use_Intake = false;
-  private boolean Use_ArmUp = false;
 
   /**
    * This function is executed when this OpMode is selected from the Driver Station.
@@ -68,13 +67,22 @@ public class Full_Bot extends LinearOpMode {
         
         if (Use_ArmRotate) {
           
-          if (gamepad2.right_stick_x > 0) {
-            ArmRotate.setPower(gamepad2.right_stick_x);
+          if (gamepad2.right_stick_y > 0) {
+            ArmRotate.setPower(gamepad2.right_stick_y);
             telemetry.addData("ArmRotate Position", "up");
           } 
-          else if (gamepad2.right_stick_x < 0) {
-            ArmRotate.setPower(gamepad2.right_stick_x);
+          else if (gamepad2.right_stick_y < 0) {
+            ArmRotate.setPower(gamepad2.right_stick_y);
             telemetry.addData("ArmRotate Position", "down");
+          }
+
+          if (gamepad2.a == true) {
+            ArmLength.setPosition(-1);
+            telemetry.addData("ArmLength Position", "down");
+          } 
+          else if (gamepad2.y == true) {
+            ArmLength.setPosition(1);
+            telemetry.addData("ArmLength Position", "up");
           }
         }
 
