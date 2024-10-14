@@ -9,11 +9,10 @@ public class Full_Bot extends LinearOpMode {
 
   private DcMotor FR;
   private DcMotor FL;
-  private DcMotor Arm;
+  private DcMotor ArmUp;
   private DcMotor ArmRotate;
-  private DcMotor Lift_Bottom;
-  private DcMotor Lift_Top;
-  private DcMotor Intake;
+  private Servo Intake;
+  private Servo ArmLength;
 
   private boolean Use_Arm = false;
   private boolean Use_Lift = false;
@@ -29,19 +28,15 @@ public class Full_Bot extends LinearOpMode {
     FL = hardwareMap.get(DcMotor.class, "FL");
 
     if (Use_Arm) {
-      Arm = hardwareMap.get(DcMotor.class, "Arm");
+      ArmUp = hardwareMap.get(DcMotor.class, "Arm");
       if (Use_ArmRotate) {
         ArmRotate = hardwareMap.get(DcMotor.class, "ArmRotate");
       }
       if (Use_Intake) {
-        Intake = hardwareMap.get(DcMotor.class, "Intake");
+        Intake = hardwareMap.get(Servo.class, "Intake");
       }
-    }
-
-    if (Use_Lift) {
-        Lift_Bottom = hardwareMap.get(DcMotor.class, "Lift_Bottom");
-        Lift_Top = hardwareMap.get(DcMotor.class, "Lift_Top");
-    }
+      ArmLength = hardwareMap.get(Servo.class, "ArmLength");
+    } 
 
     // Reverse one of the drive motors.
     // You will have to determine which motor to reverse for your robot.
@@ -62,11 +57,11 @@ public class Full_Bot extends LinearOpMode {
 
         if (Use_Arm) {
           if (gamepad2.left_stick_y > 0) {
-            Arm.setPower(gamepad2.left_stick_y);
+            ArmUp.setPower(gamepad2.left_stick_y);
             telemetry.addData("Arm Position", "up");
           } 
           else if (gamepad2.left_stick_y < 0) {
-            Arm.setPower(gamepad2.left_stick_y);
+            ArmUp.setPower(gamepad2.left_stick_y);
             telemetry.addData("Arm Position", "down");
           }
         }
@@ -85,16 +80,17 @@ public class Full_Bot extends LinearOpMode {
 
         if (Use_Intake) {
           if (gamepad2.dpad_up) {
-            Intake.setPower(1);
+            Intake.setPosition(1);
             telemetry.addData("Intake Position", "up");
           } 
           else if (gamepad2.dpad_down) {
-            Intake.setPower(-1);
+            Intake.setPosition(-1);
             telemetry.addData("Intake Position", "down");
           }
         }
 
-
+        
+        /* 
         if (Use_Lift) {
             if (gamepad2.left_trigger > 0) {
                 Lift_Top.setPower(gamepad2.left_trigger);
@@ -114,6 +110,7 @@ public class Full_Bot extends LinearOpMode {
                 telemetry.addData("Top Lift Position", "down");
             }
         }
+            */
         
         telemetry.update();
       }
