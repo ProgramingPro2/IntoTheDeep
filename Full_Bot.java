@@ -11,8 +11,7 @@ public class Full_Bot extends LinearOpMode {
   private DcMotor FL;
   private DcMotor ArmUp;
   private DcMotor ArmRotate;
-  private DcMotor Lift_Top;
-  private DcMotor Lift_Bottom;
+  private DcMotor Lift;
   private Servo Intake;
   private Servo ArmLength;
 
@@ -41,8 +40,7 @@ public class Full_Bot extends LinearOpMode {
     } 
 
     if (Use_Lift) {
-      Lift_Top = hardwareMap.get(DcMotor.class, "Lift_Top");
-      Lift_Bottom = hardwareMap.get(DcMotor.class, "Lift_Bottom");
+      Lift = hardwareMap.get(DcMotor.class, "Lift");
     }
 
     // Reverse one of the drive motors.
@@ -107,20 +105,11 @@ public class Full_Bot extends LinearOpMode {
         
         if (Use_Lift) {
             if (gamepad2.left_trigger > 0) {
-                Lift_Top.setPower(gamepad2.left_trigger);
+                Lift.setPower(gamepad2.left_trigger);
                 telemetry.addData("TopLift Position", "up");
             } 
             else if (gamepad2.left_bumper) {
-                Lift_Bottom.setPower(-1);
-                telemetry.addData("Top Lift Position", "down");
-            }
-
-            if (gamepad2.right_trigger > 0) {
-                Lift_Top.setPower(gamepad2.right_trigger);
-                telemetry.addData("TopLift Position", "up");
-            } 
-            else if (gamepad2.right_bumper) {
-                Lift_Bottom.setPower(-1);
+                Lift.setPower(-1);
                 telemetry.addData("Top Lift Position", "down");
             }
         }
