@@ -11,12 +11,15 @@ public class Full_Bot extends LinearOpMode {
   private DcMotor FL;
   private DcMotor ArmUp;
   private DcMotor ArmRotate;
+  private DcMotor Lift_Top;
+  private DcMotor Lift_Bottom;
   private Servo Intake;
   private Servo ArmLength;
 
   private boolean Use_Arm = false;
   private boolean Use_ArmRotate = false;
   private boolean Use_Intake = false;
+  private boolean Use_Lift = false;
 
   /**
    * This function is executed when this OpMode is selected from the Driver Station.
@@ -36,6 +39,11 @@ public class Full_Bot extends LinearOpMode {
       }
       ArmLength = hardwareMap.get(Servo.class, "ArmLength");
     } 
+
+    if (Use_Lift) {
+      Lift_Top = hardwareMap.get(DcMotor.class, "Lift_Top");
+      Lift_Bottom = hardwareMap.get(DcMotor.class, "Lift_Bottom");
+    }
 
     // Reverse one of the drive motors.
     // You will have to determine which motor to reverse for your robot.
@@ -96,9 +104,7 @@ public class Full_Bot extends LinearOpMode {
             telemetry.addData("Intake Position", "down");
           }
         }
-
         
-        /* 
         if (Use_Lift) {
             if (gamepad2.left_trigger > 0) {
                 Lift_Top.setPower(gamepad2.left_trigger);
@@ -118,7 +124,7 @@ public class Full_Bot extends LinearOpMode {
                 telemetry.addData("Top Lift Position", "down");
             }
         }
-            */
+            
         
         telemetry.update();
       }
